@@ -30,6 +30,12 @@ public class PlayerMovement : MonoBehaviour
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
 
+        if (h != 0 || v != 0)
+            _player.IsMoving = true;
+        else
+            _player.IsMoving = false;
+        
+
         Vector3 Direction = Vector3.right * h + Vector3.forward * v;
         transform.Translate(Direction.normalized * Time.deltaTime * _moveSpeed, Space.Self);
 

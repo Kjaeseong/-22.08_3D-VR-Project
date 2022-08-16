@@ -9,13 +9,17 @@ public class PlayerStatus : MonoBehaviour
 
     public float WalkSpeed = 4f;
     public float RunSpeed = 10f;
-    public bool IsRunning { get; set; }
+
+    public bool IsRunning;
+    public bool IsMoving;
 
     public bool FlashOn = false;
 
+    public float MinDistance;
     public int HeartBeat = 0;
 
     public GameObject FlashLight;
+
 
     private void Awake()
     {
