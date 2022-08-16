@@ -14,9 +14,9 @@ public class ZombieDetected : MonoBehaviour
 
     void Update()
     {
-        _player.MinDistance = 20f;
+        _player.MinDistance = 50f;
 
-        Collider[] collisions = Physics.OverlapSphere(transform.position, 20f);
+        Collider[] collisions = Physics.OverlapSphere(transform.position, 50f);
         foreach (Collider coll in collisions)
         {
             if (coll.gameObject.tag == "Zombie")
@@ -29,7 +29,5 @@ public class ZombieDetected : MonoBehaviour
                 
             }
         }
-
-        Debug.Log($"가장 가까운 적과의 거리는 {_player.MinDistance}");
     }
 }
