@@ -35,6 +35,7 @@ public class PlayerMovement : MonoBehaviour
 
         RotateMoveY = Input.GetAxis("Mouse X") * Time.deltaTime * _camera.RotateSpeed;
         RotateY = transform.eulerAngles.y + RotateMoveY;
+        
 
         transform.eulerAngles = new Vector3(transform.eulerAngles.x, RotateY, 0);
     }
@@ -55,9 +56,16 @@ public class PlayerMovement : MonoBehaviour
 
     void TurnOnFlash()
     {
-        if (Input.GetKeyDown(KeyCode.F))
+        if (_player.Battery >= 0)
         {
-            _player.FlashOn = _player.FlashOn ? false : true;
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                _player.FlashOn = _player.FlashOn ? false : true;
+            }
+        }
+        else 
+        {
+            _player.FlashOn = false;
         }
     }
 }

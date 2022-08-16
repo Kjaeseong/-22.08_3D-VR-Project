@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class PlayerTrigger : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private void OnTriggerStay(Collider other)
     {
-        
+        if (other.tag == "Zombie")
+        {
+            
+            Debug.Log($"{other}적 감지");
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         
     }

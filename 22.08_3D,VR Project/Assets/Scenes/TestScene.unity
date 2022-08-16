@@ -152,8 +152,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1884903228}
-  m_RootOrder: 2
+  m_Father: {fileID: 1947991618}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!108 &104905663
 Light:
@@ -327,7 +327,7 @@ GameObject:
   - component: {fileID: 1597960316}
   - component: {fileID: 1597960315}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -404,7 +404,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1597960314}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.73, z: 8.03}
+  m_LocalPosition: {x: 0, y: 2.84, z: 8.03}
   m_LocalScale: {x: 6, y: 6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -543,6 +543,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28d0eda36e460cd4f86f0950405c4d7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RotateSpeed: 200
+  RotateMoveY: 0
+  RotateY: 0
 --- !u!114 &1884903224
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -632,13 +635,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1884903222}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 515459050}
   - {fileID: 1947991618}
-  - {fileID: 104905661}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -739,7 +741,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 104905661}
   m_Father: {fileID: 1884903228}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -755,6 +758,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac881bb414cc1e94eb2f82c27fd04ef3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _rotateX: 0
+  _rotateY: 0
+  _rotateMoveX: 0
+  _rotateMoveY: 0
   RotateSpeed: 200
 --- !u!1 &2101474699
 GameObject:

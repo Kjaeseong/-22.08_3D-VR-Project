@@ -5,13 +5,15 @@ using UnityEngine;
 public class PlayerStatus : MonoBehaviour
 {
     public int Health = 5;
-    public int Battery = 100;
+    public float Battery = 100;
 
     public float WalkSpeed = 4f;
     public float RunSpeed = 10f;
     public bool IsRunning { get; set; }
 
     public bool FlashOn = false;
+
+    public int HeartBeat = 0;
 
     public GameObject FlashLight;
 
@@ -22,5 +24,15 @@ public class PlayerStatus : MonoBehaviour
     private void Update()
     {
         FlashLight.SetActive(FlashOn);
+        CostBattery();
     }
+
+    void CostBattery()
+    {
+        if (FlashOn)
+        {
+            Battery -= Time.deltaTime * 5f;
+        }
+    }
+
 }
