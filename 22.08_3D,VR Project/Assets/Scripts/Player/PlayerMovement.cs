@@ -6,7 +6,6 @@ public class PlayerMovement : MonoBehaviour
 {
     private float _moveSpeed;
 
-
     private PlayerStatus _player;
     private CameraRotate _camera;
 
@@ -21,7 +20,6 @@ public class PlayerMovement : MonoBehaviour
         PlayerRunning();
         PlayerMove();
         TurnOnFlash();
-
     }
 
     void PlayerMove()
@@ -30,9 +28,11 @@ public class PlayerMovement : MonoBehaviour
         float v = Input.GetAxis("Vertical");
 
         Vector3 Direction = Vector3.right * h + Vector3.forward * v;
+        transform.Translate(Direction.normalized * Time.deltaTime * _moveSpeed, Space.Self);
 
-        transform.eulerAngles = new Vector3(0f, _camera._rotateY, 0f);
-        transform.position += _moveSpeed * Time.deltaTime * Direction;
+        float RotateMoveY = Input.GetAxis("Mouse X") * Time.deltaTime * _camera.RotateSpeed;
+        float RotateY = transform.eulerAngles.y + RotateMoveY;
+        transform.eulerAngles = new Vector3(transform.eulerAngles.x, RotateY, 0);
     }
 
     void PlayerRunning()
