@@ -5,6 +5,9 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     private float _moveSpeed;
+    public float RotateSpeed = 200f;
+    public float RotateMoveY;
+    public float RotateY;
 
     private PlayerStatus _player;
     private CameraRotate _camera;
@@ -30,8 +33,9 @@ public class PlayerMovement : MonoBehaviour
         Vector3 Direction = Vector3.right * h + Vector3.forward * v;
         transform.Translate(Direction.normalized * Time.deltaTime * _moveSpeed, Space.Self);
 
-        float RotateMoveY = Input.GetAxis("Mouse X") * Time.deltaTime * _camera.RotateSpeed;
-        float RotateY = transform.eulerAngles.y + RotateMoveY;
+        RotateMoveY = Input.GetAxis("Mouse X") * Time.deltaTime * _camera.RotateSpeed;
+        RotateY = transform.eulerAngles.y + RotateMoveY;
+
         transform.eulerAngles = new Vector3(transform.eulerAngles.x, RotateY, 0);
     }
 
