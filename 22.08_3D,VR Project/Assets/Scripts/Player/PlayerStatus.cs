@@ -12,4 +12,15 @@ public class PlayerStatus : MonoBehaviour
     public bool IsRunning { get; set; }
 
     public bool FlashOn = false;
+
+    public GameObject FlashLight;
+
+    private void Awake()
+    {
+    }
+
+    private void Update()
+    {
+        FlashLight.SetActive(FlashOn);
+    }
 }
