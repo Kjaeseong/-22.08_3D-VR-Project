@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class ZombieDetected : MonoBehaviour
 {
-    private PlayerStatus _player;
     private float _distance;
+
+    private PlayerStatus _player;
 
     private void Awake()
     {
@@ -17,6 +18,7 @@ public class ZombieDetected : MonoBehaviour
         _player.MinDistance = 50f;
 
         Collider[] collisions = Physics.OverlapSphere(transform.position, 50f);
+
         foreach (Collider coll in collisions)
         {
             if (coll.gameObject.tag == "Zombie")

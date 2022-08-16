@@ -10,26 +10,23 @@ public class PlayerStatus : MonoBehaviour
     public float WalkSpeed = 4f;
     public float RunSpeed = 10f;
 
+    public float MinDistance;
+    public int IsScary = 0;
+
     public bool IsRunning;
     public bool IsMoving;
 
     public bool FlashOn = false;
 
-    public float MinDistance;
-    public int IsScary = 0;
-
     public GameObject FlashLight;
-
-
-    private void Awake()
-    {
-    }
 
     private void Update()
     {
         FlashLight.SetActive(FlashOn);
         CostBattery();
         Scary();
+
+        //무서움 수치 테스트 코드
         if (IsScary != 0)
         {
             Debug.Log($"무서움 수치{IsScary} / 적과의 거리 {MinDistance}");
@@ -40,7 +37,7 @@ public class PlayerStatus : MonoBehaviour
     {
         if (FlashOn)
         {
-            Battery -= Time.deltaTime * 5f;
+            Battery -= Time.deltaTime;
         }
     }
 

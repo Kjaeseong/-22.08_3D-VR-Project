@@ -4,18 +4,17 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private float _moveSpeed;
-    public float RotateSpeed = 200f;
     public float RotateMoveY;
     public float RotateY;
+    public float RotateSpeed = 200f;
+
+    private float _moveSpeed;
 
     private PlayerStatus _player;
-    private CameraRotate _camera;
 
     private void Awake()
     {
         _player = GetComponent<PlayerStatus>();
-        _camera = GetComponentInChildren<CameraRotate>();
     }
 
     private void Update()
@@ -35,14 +34,12 @@ public class PlayerMovement : MonoBehaviour
         else
             _player.IsMoving = false;
         
-
         Vector3 Direction = Vector3.right * h + Vector3.forward * v;
         transform.Translate(Direction.normalized * Time.deltaTime * _moveSpeed, Space.Self);
 
-        RotateMoveY = Input.GetAxis("Mouse X") * Time.deltaTime * _camera.RotateSpeed;
+        RotateMoveY = Input.GetAxis("Mouse X") * Time.deltaTime * RotateSpeed;
         RotateY = transform.eulerAngles.y + RotateMoveY;
         
-
         transform.eulerAngles = new Vector3(transform.eulerAngles.x, RotateY, 0);
     }
 
