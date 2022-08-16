@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class PlayerStatus : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public int Health = 5;
+    public int Battery = 100;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public float WalkSpeed = 4f;
+    public float RunSpeed = 10f;
+    public bool IsRunning { get; set; }
+
+    public bool FlashOn = false;
 }
