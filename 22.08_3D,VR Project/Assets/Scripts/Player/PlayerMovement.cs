@@ -16,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
     {
         _player = GetComponent<PlayerStatus>();
     }
-
+    
     private void Update()
     {
         PlayerRunning();

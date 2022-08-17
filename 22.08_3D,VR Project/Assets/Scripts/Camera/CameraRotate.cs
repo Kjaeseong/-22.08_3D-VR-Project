@@ -11,7 +11,7 @@ public class CameraRotate : MonoBehaviour
 
     private void Awake()
     {
-        _player = GetComponent<PlayerMovement>();
+        _player = GetComponentInParent<PlayerMovement>();
     }
 
     void Update()

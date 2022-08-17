@@ -20,17 +20,19 @@ public class PlayerStatus : MonoBehaviour
 
     public GameObject FlashLight;
 
+
     private void Update()
     {
         FlashLight.SetActive(FlashOn);
         CostBattery();
         Scary();
-
-        //무서움 수치 테스트 코드
+        /*
+        무서움 수치 테스트 코드
         if (IsScary != 0)
         {
             Debug.Log($"무서움 수치{IsScary} / 적과의 거리 {MinDistance}");
-        }    
+        }
+        */
     }
 
     void CostBattery()
