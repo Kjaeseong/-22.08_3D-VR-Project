@@ -15,5 +15,11 @@ public class PlayerAnimation : MonoBehaviour
     {
         _anim.SetBool("Move", _player.IsMoving);
         _anim.SetBool("Run", _player.IsRunning);
+        if (_player.Health <= 0)
+        {
+            _anim.SetBool("Die", true);
+        }
+        
+        
     }
 }
