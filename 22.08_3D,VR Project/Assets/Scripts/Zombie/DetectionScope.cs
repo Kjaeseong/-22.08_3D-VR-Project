@@ -14,6 +14,8 @@ public class DetectionScope : MonoBehaviour
     private ZombieStatus _zombie;
     private Vector3 _arcStartVector;
 
+    
+
     private void Awake()
     {
         _zombie = GetComponent<ZombieStatus>();
@@ -21,11 +23,13 @@ public class DetectionScope : MonoBehaviour
 
     private void Start()
     {
+
         float angle = 150f - transform.eulerAngles.y;
+        Debug.Log(angle);
         float x = Mathf.Cos(angle * Mathf.Deg2Rad);
         float z = Mathf.Sin(angle * Mathf.Deg2Rad);
 
-        _arcStartVector = new Vector3(x, 0f, z);
+        _arcStartVector = new Vector3(0f, 0f, z);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -80,20 +84,14 @@ public class DetectionScope : MonoBehaviour
     private bool LookTarget(Vector3 targetPosition)
     {
         Vector3 distanceVector = targetPosition - transform.position;
-        /*
-        Vector3 normalVector = Vector3.Cross(transform.forward, distanceVector);
-        if (normalVector.y > 0)
-        {
-            return false;
-        }
-        */
-         
+
+
          float angle = Vector3.Angle(transform.forward, distanceVector);
-         if (30f <= angle && angle <= 90f)
+         if (0f <= angle && angle <= 60f)
          {
              return true;
          }
-
+         
         float dotResult = Vector3.Dot(transform.forward, distanceVector.normalized);
         if (dotResult < 0.5f || dotResult > 0.5f)
         {
@@ -107,7 +105,6 @@ public class DetectionScope : MonoBehaviour
     private Color _blue = new Color(0f, 0f, 1f, 0.1f);
     void OnDrawGizmos()
     {
-
         Handles.color = IsTargetOn ? _red : _blue;
         Handles.DrawSolidArc(transform.position, transform.up, _arcStartVector, -30f, 20f);
         Handles.DrawSolidArc(transform.position, transform.up, _arcStartVector, 30f, 20f);

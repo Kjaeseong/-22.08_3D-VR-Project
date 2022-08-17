@@ -4,9 +4,16 @@ using UnityEngine;
 
 public class ZombieDetected : MonoBehaviour
 {
+    [Range(0, 100)]
+    public float viewArea;
+
     private float _distance;
 
     private PlayerStatus _player;
+
+    public LayerMask TargetMask;
+
+    private List<Transform> _targetslist = new List<Transform>();
 
     private void Awake()
     {
@@ -17,9 +24,9 @@ public class ZombieDetected : MonoBehaviour
     {
         _player.MinDistance = 50f;
 
-        Collider[] collisions = Physics.OverlapSphere(transform.position, 50f);
+        Collider[] ZombieInCollier = Physics.OverlapSphere(transform.position, viewArea, TargetMask);
 
-        foreach (Collider coll in collisions)
+        foreach (Collider coll in ZombieInCollier)
         {
             if (coll.gameObject.tag == "Zombie")
             { 
