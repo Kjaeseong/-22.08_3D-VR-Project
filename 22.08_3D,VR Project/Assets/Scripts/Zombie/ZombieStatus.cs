@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ZombieStatus : MonoBehaviour
 {
-    public float WalkSpeed;
-    public float RunSpeed;
+    public float WalkSpeed = 1f;
+    public float RunSpeed = 6f;
 
     public float AttackCoolTime = 1.5f;
 

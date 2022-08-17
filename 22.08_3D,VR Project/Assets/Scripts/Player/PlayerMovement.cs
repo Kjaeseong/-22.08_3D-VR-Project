@@ -19,12 +19,12 @@ public class PlayerMovement : MonoBehaviour
     
     private void Update()
     {
-        PlayerRunning();
-        PlayerMove();
+        Run();
+        Walk();
         TurnOnFlash();
     }
 
-    void PlayerMove()
+    void Walk()
     {
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
@@ -43,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
         transform.eulerAngles = new Vector3(transform.eulerAngles.x, RotateY, 0);
     }
 
-    void PlayerRunning()
+    void Run()
     {
         if (Input.GetKey(KeyCode.LeftShift))
         {

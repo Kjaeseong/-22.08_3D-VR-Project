@@ -6,15 +6,15 @@ using UnityEditor;
 public class DetectionTarget : MonoBehaviour
 {
     [Range(0, 100)]
-    public float viewArea = 45f;
+    public float viewArea = 40f;
     [Range(0, 360)]
     public float viewAngle = 90f;
 
     public LayerMask targetMask;
 
-    
+
     private float _minDistance;
-    private Transform _lockOn;
+    public Transform TargetTransform;
     private PlayerStatus _player;
 
 
@@ -28,7 +28,7 @@ public class DetectionTarget : MonoBehaviour
 
     public void GetTarget()
     {
-        _lockOn = null;
+        TargetTransform = null;
         _player = null;
         _minDistance = viewArea;
         Targets.Clear();
@@ -50,28 +50,29 @@ public class DetectionTarget : MonoBehaviour
                 if (distance < _minDistance)
                 {
                     _minDistance = distance;
-                    _lockOn = target;
+                    TargetTransform = target;
                 }
             }
-            if (_lockOn == null)
+            if (TargetTransform == null)
             {
                 if (target.name == "Mannequin")
                 {
-                    _lockOn = target;
-
+                    TargetTransform = target;
                 }
                 else if (target.name == "Player")
                 {
                     _player = target.GetComponent<PlayerStatus>();
                     if (_player.IsMoving == true && _player.IsRunning == true)
                     {
-                        _lockOn = target;
+                        TargetTransform = target;
                     }
                 }
             }
         }
-
-        transform.LookAt(_lockOn);
+        if (TargetTransform != null)
+        {
+            
+        }
     }
 
     public Vector3 GetAngle(float AngleInDegree)
