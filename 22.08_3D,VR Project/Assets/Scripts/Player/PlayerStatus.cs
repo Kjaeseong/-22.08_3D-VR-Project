@@ -45,15 +45,13 @@ public class PlayerStatus : MonoBehaviour
 
     void Scary()
     {
-        if (MinDistance <= 15)
-            IsScary = 5;
-        else if (MinDistance <= 20)
+        if (MinDistance <= 20)
             IsScary = 4;
         else if (MinDistance <= 30)
             IsScary = 3;
         else if (MinDistance <= 40)
             IsScary = 2;
-        else if (MinDistance <= 49)
+        else if (MinDistance <= 50)
             IsScary = 1;
         else
             IsScary = 0;

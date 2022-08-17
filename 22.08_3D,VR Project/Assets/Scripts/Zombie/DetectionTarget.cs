@@ -6,9 +6,9 @@ using UnityEditor;
 public class DetectionTarget : MonoBehaviour
 {
     [Range(0, 100)]
-    public float viewArea;
+    public float viewArea = 45f;
     [Range(0, 360)]
-    public float viewAngle;
+    public float viewAngle = 90f;
 
     public LayerMask targetMask;
 
@@ -24,11 +24,11 @@ public class DetectionTarget : MonoBehaviour
     void Update()
     {
         GetTarget();
-
     }
 
     public void GetTarget()
     {
+        _lockOn = null;
         _player = null;
         _minDistance = viewArea;
         Targets.Clear();
@@ -44,8 +44,8 @@ public class DetectionTarget : MonoBehaviour
 
             if (Vector3.Dot(direction.normalized, transform.forward) > GetAngle(viewAngle / 2).z)
             {
-                Targets.Add(target);
 
+                Targets.Add(target);
                 distance = Vector3.Distance(transform.position, target.position);
                 if (distance < _minDistance)
                 {
@@ -53,11 +53,12 @@ public class DetectionTarget : MonoBehaviour
                     _lockOn = target;
                 }
             }
-            else
-            { 
+            if (_lockOn == null)
+            {
                 if (target.name == "Mannequin")
                 {
                     _lockOn = target;
+
                 }
                 else if (target.name == "Player")
                 {
@@ -67,13 +68,10 @@ public class DetectionTarget : MonoBehaviour
                         _lockOn = target;
                     }
                 }
-        
             }
         }
 
-        Debug.Log($"타겟 : {_lockOn.name}");
-
-
+        transform.LookAt(_lockOn);
     }
 
     public Vector3 GetAngle(float AngleInDegree)
@@ -85,8 +83,8 @@ public class DetectionTarget : MonoBehaviour
     private void OnDrawGizmos()
     {
         Handles.DrawWireArc(transform.position, Vector3.up, transform.forward, 360, viewArea);
-        Handles.DrawLine(transform.position, transform.position + GetAngle(-viewAngle / 2) * viewArea);
-        Handles.DrawLine(transform.position, transform.position + GetAngle(viewAngle / 2) * viewArea);
+        //Handles.DrawLine(transform.position, transform.position + GetAngle(-viewAngle / 2) * viewArea);
+        //Handles.DrawLine(transform.position, transform.position + GetAngle(viewAngle / 2) * viewArea);
 
         foreach (Transform Target in Targets)
         {
