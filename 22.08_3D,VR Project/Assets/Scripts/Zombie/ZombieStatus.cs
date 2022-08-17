@@ -9,12 +9,17 @@ public class ZombieStatus : MonoBehaviour
 
     public float AttackCoolTime = 1.5f;
 
+    public bool CanAttack;
+
 
     private void Awake()
     {
     }
 
-
+    private void Update()
+    {
+        
+    }
 
 
 }

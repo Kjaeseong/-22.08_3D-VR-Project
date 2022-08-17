@@ -12,11 +12,9 @@ public class DetectionTarget : MonoBehaviour
 
     public LayerMask targetMask;
 
-
     private float _minDistance;
     public Transform TargetTransform;
     private PlayerStatus _player;
-
 
     [HideInInspector]
     public List<Transform> Targets = new List<Transform>();
@@ -79,7 +77,6 @@ public class DetectionTarget : MonoBehaviour
     {
         return new Vector3(Mathf.Sin(AngleInDegree * Mathf.Deg2Rad), 0, Mathf.Cos(AngleInDegree * Mathf.Deg2Rad));
     }
-
 
     private void OnDrawGizmos()
     {

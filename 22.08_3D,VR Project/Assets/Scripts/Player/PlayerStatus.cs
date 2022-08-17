@@ -20,7 +20,6 @@ public class PlayerStatus : MonoBehaviour
 
     public GameObject FlashLight;
 
-
     private void Update()
     {
         FlashLight.SetActive(FlashOn);

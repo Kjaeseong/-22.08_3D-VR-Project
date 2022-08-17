@@ -8,11 +8,12 @@ public class ZombieMovement : MonoBehaviour
     private ZombieStatus _zombie;
 
     public bool IsRunning;
-    private float _moveSpeed;
-    private bool _canTurn;
+    public bool LockOn;
+    public float AttackDistance = 1.5f;
+
     public float TurnDelay = 4f;
     private float _turn = 0f;
-    public bool LockOn;
+    private float _moveSpeed;
 
     private void Awake()
     {
@@ -41,8 +42,9 @@ public class ZombieMovement : MonoBehaviour
         float DistanceToTarget = Vector3.Distance(transform.position, _detection.TargetTransform.position);
         transform.LookAt(_detection.TargetTransform);
 
-        if (DistanceToTarget >= 1.5f)
-        { 
+        if (DistanceToTarget >= AttackDistance)
+        {
+            _zombie.CanAttack = true;
             transform.Translate(_moveSpeed * Time.deltaTime * Vector3.forward.normalized);
         }
     }
@@ -61,18 +63,7 @@ public class ZombieMovement : MonoBehaviour
         _turn += Time.deltaTime;
         if (_turn >= TurnDelay)
         {
-            Debug.Log("방향전환");
-
             transform.rotation = Quaternion.Euler(0f, Random.Range(0, 180), 0f); 
-
-
-            
-
-
-
-
-
-
 
             _turn = 0f;
         }
