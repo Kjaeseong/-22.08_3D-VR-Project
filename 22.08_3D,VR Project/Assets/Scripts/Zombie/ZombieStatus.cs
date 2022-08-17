@@ -9,11 +9,9 @@ public class ZombieStatus : MonoBehaviour
 
     public float AttackCoolTime = 1.5f;
 
-    private DetectionScope _scope;
 
     private void Awake()
     {
-        _scope = GetComponentInChildren<DetectionScope>();
     }
 
 
