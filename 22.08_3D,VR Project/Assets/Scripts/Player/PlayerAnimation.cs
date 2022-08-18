@@ -15,5 +15,6 @@ public class PlayerAnimation : MonoBehaviour
     {
         _anim.SetBool("Move", _player.IsMoving);
         _anim.SetBool("Run", _player.IsRunning);
+        _anim.SetInteger("HP", _player.Health);
     }
 }

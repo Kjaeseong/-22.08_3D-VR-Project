@@ -11,6 +11,10 @@ public class ZombieStatus : MonoBehaviour
 
     public bool CanAttack;
 
+    public bool IsRun;
+    public bool IsWalk;
+
+
 
     private void Awake()
     {

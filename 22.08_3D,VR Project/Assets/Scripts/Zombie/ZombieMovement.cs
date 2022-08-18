@@ -7,7 +7,6 @@ public class ZombieMovement : MonoBehaviour
     private DetectionTarget _detection;
     private ZombieStatus _zombie;
 
-    public bool IsRunning;
     public bool LockOn;
     public float AttackDistance = 1.5f;
 
@@ -38,22 +37,29 @@ public class ZombieMovement : MonoBehaviour
     void RunToTarget()
     {
         _moveSpeed = _zombie.RunSpeed;
-        IsRunning = true;
-        float DistanceToTarget = Vector3.Distance(transform.position, _detection.TargetTransform.position);
+        float DistanceToTarget = Vector3.Distance(_detection.TargetTransform.position, transform.position);
         transform.LookAt(_detection.TargetTransform);
 
         if (DistanceToTarget >= AttackDistance)
         {
-            _zombie.CanAttack = true;
+            _zombie.IsRun = true;
+            _zombie.IsWalk = false;
+            _zombie.CanAttack = false;
             transform.Translate(_moveSpeed * Time.deltaTime * Vector3.forward.normalized);
+        }
+        else
+        {
+            _zombie.IsRun = true;
+            _zombie.IsWalk = false;
+            _zombie.CanAttack = true;
         }
     }
 
     void IdleMove()
     {
         _moveSpeed = _zombie.WalkSpeed;
-        IsRunning = false;
-
+        _zombie.IsRun = false;
+        _zombie.IsWalk = true;
         transform.Translate(_moveSpeed * Time.deltaTime * Vector3.forward.normalized);
         Turn();
     }
