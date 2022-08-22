@@ -1,2 +1,1 @@
-# -22.08_3D-VR-Project
-3D / VR 개인 프로젝트(공포/탈출)
+[기획안 링크](https://kjaeseong.github.io/unityexample/3DVRProject/)
